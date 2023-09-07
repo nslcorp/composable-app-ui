@@ -8,53 +8,26 @@ import {
   SfIconExpandMore,
   SfInput,
   SfIconSearch,
-  SfIconMenu, SfIconAddShoppingCart,
+  SfIconMenu,
+  SfIconAddShoppingCart,
 } from "@storefront-ui/react";
 import Link from "next/link";
 
 export default function TopNav() {
-  const [inputValue, setInputValue] = useState("");
 
-  const actionItems = [
-    {
-      icon: <SfIconShoppingCart />,
-      label: "",
-      ariaLabel: "Cart",
-      role: "button",
-    },
-    {
-      icon: <SfIconFavorite />,
-      label: "",
-      ariaLabel: "Wishlist",
-      role: "button",
-    },
-    {
-      label: "Log in",
-      icon: <SfIconPerson />,
-      ariaLabel: "Log in",
-      role: "login",
-    },
-  ];
-
-  const search = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    alert(`Successfully found 10 results for ${inputValue}`);
-  };
 
   return (
-    <header className="flex justify-center w-full h-10">
-      <div className="flex flex-wrap lg:flex-nowrap items-center flex-row justify-start h-full max-w-[1536px] w-full">
+    <header className="h-15 flex justify-center items-center bg-gray-100">
         <div>
-          <Link href="/">Home</Link>
-
+          <Link href="/">
+            <SfButton type="button" variant="secondary">MyAwesomeShop</SfButton>
+          </Link>
         </div>
-        <div>
-          <SfButton>
-            <SfIconAddShoppingCart />
-          </SfButton>
+        <div className="ml-auto">
+          <Link href="/cart">
+            <SfButton variant="secondary" square slotPrefix={<SfIconShoppingCart />}>Cart</SfButton>
+          </Link>
         </div>
-
-      </div>
     </header>
   );
 }
