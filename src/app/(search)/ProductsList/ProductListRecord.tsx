@@ -51,8 +51,6 @@ export default function ProductListRecord(props: ProductListRecordProps) {
   );
   const [selectedSize, setSelectedSize] = React.useState(sizeOptions[0].value);
 
-  console.log(selectedColor);
-  console.log(selectedSize);
 
   const navigateTo = `/product/${props.item.slug}`;
 
@@ -76,7 +74,7 @@ export default function ProductListRecord(props: ProductListRecordProps) {
               <SfLink
                 href={navigateTo}
                 variant="secondary"
-                className="no-underline text-lg"
+                className="text-lg text-emerald-800"
               >
                 {props.item.name}
               </SfLink>
@@ -127,6 +125,7 @@ export default function ProductListRecord(props: ProductListRecordProps) {
                 type="button"
                 size="sm"
                 slotPrefix={<SfIconShoppingCart size="sm" />}
+                disabled
               >
                 Add to cart
               </SfButton>
