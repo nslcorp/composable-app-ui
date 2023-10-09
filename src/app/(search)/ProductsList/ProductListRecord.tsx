@@ -92,7 +92,6 @@ export default function ProductListRecord(props: ProductListRecordProps) {
                   Color
                 </span>
                 <SfSelect
-                  placeholder="Select color"
                   size="sm"
                   value={selectedColor}
                   onChange={(event) => setSelectedColor(event.target.value)}
@@ -110,7 +109,7 @@ export default function ProductListRecord(props: ProductListRecordProps) {
                 <span className="pb-1 text-sm font-medium text-neutral-900 font-body">
                   Size
                 </span>
-                <SfSelect placeholder="-- Select --" size="sm" value="red">
+                <SfSelect  size="sm" value="red">
                   {sizeOptions.map((option) => (
                     <option value={option.value} key={option.value}>
                       {option.label}

@@ -8,6 +8,9 @@ const SearchPage = async () => {
   const categories = await fetchCategories();
   const products = await fetchProducts(23);
 
+  // const cart = useAppSelector(state => state)
+  // console.log('SearchPage: cart', cart)
+
   return (
     <>
       <div className="flex">

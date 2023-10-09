@@ -32,3 +32,28 @@ export interface ProductVariant {
   }[];
   slug: string;
 }
+
+
+export interface CartLineItem {
+  id: string;
+  quantity: number;
+  totalPrice: number;
+  variant: {
+    sku: string;
+    name: string;
+    prices: {value: {
+      currencyCode: string;
+      centAmount: number;
+      }}[];
+  }
+}
+export interface Cart {
+  id: string;
+  customerId: null | string;
+  lineItems: CartLineItem[];
+}
+
+export interface AddCartProduct {
+  sku: string;
+  qty: string;
+}

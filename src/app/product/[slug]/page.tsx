@@ -4,6 +4,7 @@ import { fetchCategories } from "@/api/fetchCategories";
 import ProductDetails from "@/app/product/[slug]/ProductDetails/ProductDetails";
 import { fetchProductDetails } from "@/api/fetchProductDetails";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import {useLocalStorage} from "react-use";
 
 interface ProductDetailsProps {
   params: {
