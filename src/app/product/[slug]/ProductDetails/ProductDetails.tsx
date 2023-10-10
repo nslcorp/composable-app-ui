@@ -1,13 +1,11 @@
 "use client";
 import React from "react";
-import {SfButton, SfIconShoppingCart, SfSelect} from "@storefront-ui/react";
+import {SfButton, SfIconShoppingCart} from "@storefront-ui/react";
 import { Product } from "@/types";
 import { getProductSizes } from "@/helpers/getProductSizes";
-import { mapToSelectOptions } from "@/helpers/mapToSelectOptions";
 import SimpleSelect from "@/components/SimpleSelect/SimpleSelect";
 import { getProductColors } from "@/helpers/getProductColors";
 import {addProductToCart} from "@/api/cart/addProductToCart";
-// import {addProductToCart} from "@/api/cart/addProductToCart";
 
 interface ProductDetailsProps {
   data: Product;
@@ -28,7 +26,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
 
   const handleAddToCart = async () => {
     const product = {
-      qty: 1,
+      qty: "1",
       sku
     }
 

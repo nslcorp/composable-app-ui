@@ -1,22 +1,23 @@
 import React from "react";
-import Filters from "@/app/(search)/Filters/page";
+import Filters from "@/app/search/Filters/page";
 import { fetchCategories } from "@/api/fetchCategories";
 import ProductDetails from "@/app/product/[slug]/ProductDetails/ProductDetails";
 import { fetchProductDetails } from "@/api/fetchProductDetails";
-import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import {useLocalStorage} from "react-use";
 
 interface ProductDetailsProps {
   params: {
     slug: string;
+  },
+  searchParams: {
+    category: string;
   };
 }
 
 const ProductDetailsPage = async (props: ProductDetailsProps) => {
-  const categories = await fetchCategories();
 
   const slug = props.params.slug;
   const productDetails = await fetchProductDetails(slug);
+  const categories = await fetchCategories();
 
   return (
     <div>

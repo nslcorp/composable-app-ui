@@ -1,9 +1,7 @@
 "use client";
-import React, {useEffect} from "react";
+import React from "react";
 import { Provider } from "react-redux";
-import {store, useAppDispatch} from "@/store/store";
-import {getCart} from "@/api/cart/getCart";
-import {setCart} from "@/store/reducer/cartSlice";
+import {store} from "@/store/store";
 
 type Props = {
   children: React.ReactNode;

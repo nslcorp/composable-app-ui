@@ -1,9 +1,6 @@
-"use client";
-import React, { useEffect } from "react";
-import { SfBadge, SfButton, SfIconShoppingCart } from "@storefront-ui/react";
+"use client"
+import { SfButton } from "@storefront-ui/react";
 import Link from "next/link";
-import { useAppSelector } from "@/store/store";
-import { selectCart } from "@/store/reducer/cartSlice";
 import CartButton from "@/components/Header/CartButton";
 
 export default function Header() {
@@ -24,3 +21,4 @@ export default function Header() {
     </header>
   );
 }
+

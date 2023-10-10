@@ -2,7 +2,7 @@ export interface Category {
   id: number;
   name: string;
   product_count: number;
-  ancestors: any;
+  ancestors: Category[];
   parent: {
     id: number;
   };
@@ -48,8 +48,8 @@ export interface CartLineItem {
   }
 }
 export interface Cart {
-  id: string;
-  customerId: null | string;
+  id?: string;
+  customerId?: null | string;
   lineItems: CartLineItem[];
 }
 

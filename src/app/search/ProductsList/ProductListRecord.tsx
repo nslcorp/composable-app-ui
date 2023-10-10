@@ -49,7 +49,6 @@ export default function ProductListRecord(props: ProductListRecordProps) {
   const [selectedColor, setSelectedColor] = React.useState(
     colorOptions[0].value
   );
-  const [selectedSize, setSelectedSize] = React.useState(sizeOptions[0].value);
 
 
   const navigateTo = `/product/${props.item.slug}`;
@@ -119,15 +118,15 @@ export default function ProductListRecord(props: ProductListRecordProps) {
               </label>
             </div>
             <div className="w-1/3 flex mt-4">
-              <SfButton
-                className="ml-auto"
-                type="button"
-                size="sm"
-                slotPrefix={<SfIconShoppingCart size="sm" />}
-                disabled
-              >
-                Add to cart
-              </SfButton>
+              {/*<SfButton*/}
+              {/*  className="ml-auto"*/}
+              {/*  type="button"*/}
+              {/*  size="sm"*/}
+              {/*  slotPrefix={<SfIconShoppingCart size="sm" />}*/}
+              {/*  disabled*/}
+              {/*>*/}
+              {/*  Add to cart*/}
+              {/*</SfButton>*/}
             </div>
           </div>
         </div>

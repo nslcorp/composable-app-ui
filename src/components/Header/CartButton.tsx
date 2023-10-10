@@ -1,29 +1,26 @@
-'use client';
-import React from 'react';
-import {SfBadge, SfButton, SfIconShoppingCart} from "@storefront-ui/react";
+"use client";
+import React from "react";
+import { SfBadge, SfButton, SfIconShoppingCart } from "@storefront-ui/react";
 import Link from "next/link";
-import {useAppSelector} from "@/store/store";
-import {selectCart} from "@/store/reducer/cartSlice";
+import { useAppSelector } from "@/store/store";
+import { selectCart } from "@/store/reducer/cartSlice";
+import { spans } from "next/dist/build/webpack/plugins/profiling-plugin";
 
 const CartButton = () => {
-  const cart = useAppSelector(selectCart);
-  let count = 0;
-  if(cart && cart.lineItems) {
-    count = cart.lineItems.length;
-  }
-  console.log({cart});
+  const { loading, data } = useAppSelector(selectCart);
 
+  const cartMessage = loading ? "Loading cart ..." : "Cart";
 
   return (
     <SfButton
       variant="secondary"
       square
-      slotPrefix={<SfIconShoppingCart/>}
+      slotPrefix={<SfIconShoppingCart />}
+      disabled={loading}
     >
-      Cart
-      <SfBadge content={count}/>
+      {cartMessage}
+      {!loading && <SfBadge content={data.lineItems.length} />}
     </SfButton>
-
   );
 };
 
