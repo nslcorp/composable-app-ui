@@ -5,7 +5,7 @@ import { removeProductFormCart } from "@/api/cart/removeProductFormCart";
 import { useAppDispatch } from "@/store/store";
 import { fetchCart } from "@/store/reducer/cartSlice";
 import { getCartId } from "@/api/cart/getCartId";
-import ProductQuantity from "@/app/cart/CartItem/Components/ProductQuantity";
+import ProductQuantity from "@/app/cart/CartItem/components/ProductQuantity";
 
 interface CartItemProps {
   item: CartLineItem;
