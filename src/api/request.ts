@@ -11,6 +11,7 @@ export const request = async (url: string, options: RequestOptions = {}) => {
     method: options.method || 'GET',
     headers: options.headers || {},
     data: options.body || {},
+
   }
   const response = axios.request(axiosConfig).then((res) => res.data);
 

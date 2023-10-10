@@ -54,6 +54,6 @@ export interface Cart {
 }
 
 export interface AddCartProduct {
-  sku: string;
+  sku?: string;
   qty: string;
 }

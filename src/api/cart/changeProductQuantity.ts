@@ -1,16 +1,15 @@
-import { request } from "@/api/request";
-import { AddCartProduct } from "@/types";
 import { getCartId } from "@/api/cart/getCartId";
+import { request } from "@/api/request";
 
-export const addProductToCart = async (cartProduct: AddCartProduct) => {
+export const changeProductQuantity = async (itemId: string, qty: number) => {
   try {
     const cartId = getCartId();
 
     const data: any = await request(
-      `http://localhost:3000/cart/${cartId}/items`,
+      `http://localhost:3000/cart/${cartId}/items/${itemId}`,
       {
-        method: "POST",
-        body: cartProduct,
+        method: "PUT",
+        body: { qty },
       }
     );
     return data;

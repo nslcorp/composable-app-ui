@@ -6,6 +6,9 @@ import { getProductSizes } from "@/helpers/getProductSizes";
 import SimpleSelect from "@/components/SimpleSelect/SimpleSelect";
 import { getProductColors } from "@/helpers/getProductColors";
 import {addProductToCart} from "@/api/cart/addProductToCart";
+import {useAppDispatch} from "@/store/store";
+import {fetchCart} from "@/store/reducer/cartSlice";
+import {getCartId} from "@/api/cart/getCartId";
 
 interface ProductDetailsProps {
   data: Product;
@@ -21,7 +24,8 @@ const ProductDetails = (props: ProductDetailsProps) => {
 
   const [selectedColor, setSelectedColor] = React.useState(colors[0]);
   const [selectedSize, setSelectedSize] = React.useState(sizes[0]);
-  const [isAddedToCart, setIsAddedToCart] = React.useState(false);
+  const [isAddingToCart, setIsAddingToCart] = React.useState(false);
+  const dispatch = useAppDispatch();
 
 
   const handleAddToCart = async () => {
@@ -29,8 +33,11 @@ const ProductDetails = (props: ProductDetailsProps) => {
       qty: "1",
       sku
     }
-
+    setIsAddingToCart(true);
     await addProductToCart(product)
+    const cartId = getCartId();
+    dispatch(fetchCart(cartId));
+    setIsAddingToCart(false);
   }
 
   return (
@@ -77,9 +84,9 @@ const ProductDetails = (props: ProductDetailsProps) => {
             size="sm"
             slotPrefix={<SfIconShoppingCart  />}
             onClick={handleAddToCart}
-            disabled={isAddedToCart}
+            disabled={isAddingToCart}
           >
-            Add to cart
+            {isAddingToCart ? "Adding..." : "Add to cart"}
           </SfButton>
         </div>
       </div>

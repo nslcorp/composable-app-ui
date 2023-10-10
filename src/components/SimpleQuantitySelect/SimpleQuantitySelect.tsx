@@ -2,11 +2,12 @@ import { SfButton, SfIconAdd, SfIconRemove } from "@storefront-ui/react";
 import { useCounter } from "react-use";
 import { useId, ChangeEvent } from "react";
 import { clamp } from "@storefront-ui/shared";
-import { addProductToCart } from "@/api/cart/addProductToCart";
 
 interface SimpleQuantitySelectProps {
   quantity: number;
-  sku: string;
+  disabled?: boolean;
+  onIncrement: (qty: number) => void;
+  onDecrement: (qty: number) => void;
 }
 
 export default function SimpleQuantitySelect(props: SimpleQuantitySelectProps) {
@@ -14,19 +15,21 @@ export default function SimpleQuantitySelect(props: SimpleQuantitySelectProps) {
   const min = 1;
   const max = 100;
   const [value, { inc, dec, set }] = useCounter(props.quantity);
+
   function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
     const { value: currentValue } = event.target;
     const nextValue = parseFloat(currentValue);
     set(clamp(nextValue, min, max));
   }
 
-  const handleIncrementItem = async () => {
-    console.log('before inc', value);
+  const handleIncrementItem = () => {
     inc();
-    console.log('after inc', value);
+    props.onIncrement(value + 1);
+  };
 
-    // Item increments always by adding One more to existing quantity
-    await addProductToCart({ sku: props.sku, qty: "1" });
+  const handleDecrementItem = () => {
+    dec();
+    props.onDecrement(value - 1);
   };
 
   return (
@@ -37,10 +40,10 @@ export default function SimpleQuantitySelect(props: SimpleQuantitySelectProps) {
           variant="tertiary"
           square
           className="rounded-r-none"
-          disabled={value <= min}
+          disabled={value <= min || props.disabled}
           aria-controls={inputId}
           aria-label="Decrease value"
-          onClick={() => dec()}
+          onClick={handleDecrementItem}
         >
           <SfIconRemove />
         </SfButton>
@@ -53,13 +56,14 @@ export default function SimpleQuantitySelect(props: SimpleQuantitySelectProps) {
           max={max}
           value={value}
           onChange={handleOnChange}
+          disabled={props.disabled}
         />
         <SfButton
           type="button"
           variant="tertiary"
           square
           className="rounded-l-none"
-          disabled={value >= max}
+          disabled={value >= max || props.disabled}
           aria-controls={inputId}
           aria-label="Increase value"
           onClick={handleIncrementItem}

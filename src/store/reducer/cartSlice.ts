@@ -5,11 +5,7 @@ import { getCart } from "@/api/cart/getCart";
 
 export const fetchCart = createAsyncThunk(
   "cart/getCart",
-  async (cartId: string | undefined, thunkAPI) => {
-    if (!cartId) {
-      return thunkAPI.rejectWithValue({ error: "No cartId" });
-    }
-
+  async (cartId: string, thunkAPI) => {
     try {
       const response = await getCart(cartId);
       return response;
