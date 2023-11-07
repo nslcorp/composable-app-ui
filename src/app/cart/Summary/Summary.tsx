@@ -1,7 +1,7 @@
 import SectionLayout from "@/components/SectionLayout/SectionLayout";
 import { SfButton, SfLink } from "@storefront-ui/react";
-import { useAppDispatch, useAppSelector } from "@/store/store";
-import { fetchCart, selectCart } from "@/store/reducer/cartSlice";
+import { useAppSelector } from "@/store/store";
+import { selectCart } from "@/store/reducer/cartSlice";
 import { CartLineItem } from "@/types";
 import { putOrder } from "@/api/cart/putOrder";
 import { useState } from "react";
@@ -19,10 +19,11 @@ const Summary = (props: SummaryProps) => {
 
   const handlePlaceOrder = async () => {
     setIsPlacingOderLoading(true);
-    const orderID = await putOrder();
+    const order = await putOrder();
     setIsPlacingOderLoading(false);
     setIsOrderPlaced(true);
-    alert(`Order ${orderID} has been placed.`);
+    console.info(`Order ${order.id} has been placed.`)
+    alert(`Order ${order.id} has been placed.`);
   };
 
   return (
@@ -41,8 +42,8 @@ const Summary = (props: SummaryProps) => {
           <div className=" text-neutral-400">Shipping</div>
           <div className="ml-auto text-neutral-700">0</div>
         </div>
-        <div className="border-y my-4"></div>
-        <div className="flex w-full">
+        <div className="border-y my-4 f"></div>
+        <div className="fle w-full ">
           <div className="md:text-xl">Total</div>
           <div className="ml-auto md:text-xl">{subTotal}</div>
         </div>

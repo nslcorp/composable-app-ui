@@ -11,7 +11,7 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/search?category=jackets',
+        destination: '/search?category=hoodies_%26_sweatshirts',
         permanent: false,
       },
     ]

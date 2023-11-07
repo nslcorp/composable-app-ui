@@ -1,3 +1,4 @@
+import { contentstack } from "@/api/contentstack";
 import ProductsList from "@/app/search/ProductsList/ProductsList";
 import Filters from "@/app/search/Filters/page";
 import { fetchCategories } from "@/api/fetchCategories";

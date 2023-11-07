@@ -17,7 +17,7 @@ const SimpleSelect = (props: SimpleSelectProps) => {
   }
 
   return (
-    <div>
+    <div className="">
       <label>
         {props.selectLabel && (
           <span className="pb-1 font-medium text-neutral-900 font-body">

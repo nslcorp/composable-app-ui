@@ -1,3 +1,4 @@
+import { contentstack } from "@/api/contentstack";
 import React from "react";
 import Filters from "@/app/search/Filters/page";
 import { fetchCategories } from "@/api/fetchCategories";
@@ -7,17 +8,19 @@ import { fetchProductDetails } from "@/api/fetchProductDetails";
 interface ProductDetailsProps {
   params: {
     slug: string;
-  },
+  };
   searchParams: {
     category: string;
   };
 }
 
 const ProductDetailsPage = async (props: ProductDetailsProps) => {
-
   const slug = props.params.slug;
   const productDetails = await fetchProductDetails(slug);
   const categories = await fetchCategories();
+  console.log(slug);
+
+  const productResponse = await contentstack.getProduct("hera-pullover-hoodie");
 
   return (
     <div>
