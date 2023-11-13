@@ -1,8 +1,8 @@
 "use client";
 import { addProductToCart } from "@/api/cart/addProductToCart";
 import { getCartId } from "@/api/cart/getCartId";
-import { ProductResponse } from "@/api/contentstack/types";
-import PromoSection from "@/app/product/[slug]/ProductDetails/components/PromoSection/PromoSection";
+import { PromoSection } from "@/api/contentstack/types";
+import PromoList from "@/app/product/[slug]/ProductDetails/components/PromoList/PromoList";
 import SimpleSelect from "@/components/SimpleSelect/SimpleSelect";
 import { getProductColors } from "@/helpers/getProductColors";
 import { getProductSizes } from "@/helpers/getProductSizes";
@@ -14,7 +14,7 @@ import React from "react";
 
 interface ProductDetailsProps {
   data: Product;
-  // productCS: ProductResponse;
+  promo: PromoSection[];
 }
 
 const ProductDetails = (props: ProductDetailsProps) => {
@@ -94,7 +94,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
         </div>
       </div>
 
-      <PromoSection />
+      <PromoList data={props.promo} />
 
     </div>
   );

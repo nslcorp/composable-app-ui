@@ -1,4 +1,4 @@
-import { contentstack } from "@/api/contentstack";
+import { getProduct } from "@/api/contentstack/getProduct";
 import React from "react";
 import Filters from "@/app/search/Filters/page";
 import { fetchCategories } from "@/api/fetchCategories";
@@ -20,7 +20,10 @@ const ProductDetailsPage = async (props: ProductDetailsProps) => {
   const categories = await fetchCategories();
   console.log(slug);
 
-  const productResponse = await contentstack.getProduct("hera-pullover-hoodie");
+  // const productResponse = await contentstack.getProduct("hera-pullover-hoodie");
+
+  const promoSection = await getProduct(slug);
+
 
   return (
     <div>
@@ -30,7 +33,7 @@ const ProductDetailsPage = async (props: ProductDetailsProps) => {
         </div>
         <div className="w-full">
           {productDetails ? (
-            <ProductDetails data={productDetails} />
+            <ProductDetails data={productDetails} promo={promoSection} />
           ) : (
             `No product details for product slug: ${slug}`
           )}

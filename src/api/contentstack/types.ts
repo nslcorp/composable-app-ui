@@ -1,36 +1,40 @@
+import { Product } from "@/types";
+
 export interface ProductResponse {
   commercetools_id: string;
   description: string;
   price: number;
   category: CategoryResponse[];
-  promo_section: (PromoText | PromoImage | PromoRelatedProducts)[];
+  promo_section: PromoSection[];
   seo: Seo;
   tags: [];
   title: string;
   url: string;
 }
 
-interface PromoText {
-  promo_text: { title: string; description: string };
+export interface PromoSection {
+  promo_text?: PromoText;
+  promo_image?: PromoImage;
+  related_products?: PromoRelatedProducts;
 }
 
-interface PromoImage {
-  promo_image: { title: string; promo_image_value: any };
+export interface PromoText {
+  title: string;
+  description: string;
 }
 
-interface PromoRelatedProducts {
-  related_products: {
-    related_products_value: string;
-  };
+export interface PromoImage {
+  title: string;
+  image: Image;
+}
+
+export interface PromoRelatedProducts {
+  title: string;
+  relatedproducts: ProductResponse[];
 }
 
 export interface CategoryResponse {
   uid: string;
-}
-
-export interface PromoTextResponse {
-  title: string;
-  description: string;
 }
 
 export interface Seo {
@@ -38,4 +42,9 @@ export interface Seo {
   keywords: string;
   meta_description: string;
   meta_title: string;
+}
+
+export type Image = {
+  filename: string;
+  url: string;
 }
