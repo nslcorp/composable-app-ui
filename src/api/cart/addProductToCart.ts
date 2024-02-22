@@ -1,4 +1,4 @@
-import { request } from "@/api/request";
+import { BASE_ULR, request } from "@/api/request";
 import { AddCartProduct } from "@/types";
 import { getCartId } from "@/api/cart/getCartId";
 
@@ -7,7 +7,7 @@ export const addProductToCart = async (cartProduct: AddCartProduct) => {
     const cartId = getCartId();
 
     const data: any = await request(
-      `http://localhost:3000/cart/${cartId}/items`,
+      `${BASE_ULR}/cart/${cartId}/items`,
       {
         method: "POST",
         body: cartProduct,

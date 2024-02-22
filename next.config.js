@@ -7,15 +7,25 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  async redirects() {
-    return [
+  images: {
+    remotePatterns: [
       {
-        source: '/',
-        destination: '/search?category=hoodies_%26_sweatshirts',
-        permanent: false,
+        protocol: 'https',
+        hostname: 'eu-images.contentstack.com',
+        port: '',
+        pathname: '/*/**',
       },
-    ]
+    ],
   },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/search?category=hoodies_%26_sweatshirts',
+  //       permanent: false,
+  //     },
+  //   ]
+  // },
 };
 
 module.exports = nextConfig

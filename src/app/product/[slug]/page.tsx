@@ -14,11 +14,10 @@ interface ProductDetailsProps {
   };
 }
 
-const ProductDetailsPage = async (props: ProductDetailsProps) => {
+const ProductDetailsPage = async (props: ProductDetailsProps,) => {
   const slug = props.params.slug;
   const productDetails = await fetchProductDetails(slug);
   const categories = await fetchCategories();
-  console.log(slug);
 
   // const productResponse = await contentstack.getProduct("hera-pullover-hoodie");
 

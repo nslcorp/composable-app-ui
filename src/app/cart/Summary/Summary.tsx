@@ -4,6 +4,7 @@ import { useAppSelector } from "@/store/store";
 import { selectCart } from "@/store/reducer/cartSlice";
 import { CartLineItem } from "@/types";
 import { putOrder } from "@/api/cart/putOrder";
+import Link from "next/link";
 import { useState } from "react";
 
 interface SummaryProps {}
@@ -18,12 +19,13 @@ const Summary = (props: SummaryProps) => {
   }, 0);
 
   const handlePlaceOrder = async () => {
-    setIsPlacingOderLoading(true);
-    const order = await putOrder();
-    setIsPlacingOderLoading(false);
-    setIsOrderPlaced(true);
-    console.info(`Order ${order.id} has been placed.`)
-    alert(`Order ${order.id} has been placed.`);
+    // setIsPlacingOderLoading(true);
+    // const order = await putOrder();
+    // setIsPlacingOderLoading(false);
+    // setIsOrderPlaced(true);
+    // console.info(`Order ${order.id} has been placed.`)
+    console.info(`Order has been placed.`);
+    // alert(`Order ${order.id} has been placed.`);
   };
 
   return (
@@ -54,7 +56,7 @@ const Summary = (props: SummaryProps) => {
           onClick={handlePlaceOrder}
           disabled={isOrderPlaced || isPlacingOrderLoading}
         >
-          Place Order And Pay
+          <Link href="/cart/checkout">Place Order And Pay</Link>
         </SfButton>
         <div className="typography-text-sm mt-4 text-center">
           By placing my order, you agree to our{" "}

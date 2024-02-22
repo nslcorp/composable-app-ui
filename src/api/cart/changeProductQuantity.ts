@@ -1,12 +1,12 @@
 import { getCartId } from "@/api/cart/getCartId";
-import { request } from "@/api/request";
+import { BASE_ULR, request } from "@/api/request";
 
 export const changeProductQuantity = async (itemId: string, qty: number) => {
   try {
     const cartId = getCartId();
 
     const data: any = await request(
-      `http://localhost:3000/cart/${cartId}/items/${itemId}`,
+      `${BASE_ULR}/cart/${cartId}/items/${itemId}`,
       {
         method: "PUT",
         body: { qty },

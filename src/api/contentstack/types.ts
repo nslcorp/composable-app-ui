@@ -48,3 +48,20 @@ export type Image = {
   filename: string;
   url: string;
 }
+
+export interface SalePage {
+  uid: string;
+  title: string;
+  banner_image: Image,
+  offer_list: SaleOfferRecord[]
+}
+
+export interface SaleOfferRecord {
+  title: string,
+  description: string,
+  image: Image,
+  url: {
+    title: string,
+    href: string
+  }
+}

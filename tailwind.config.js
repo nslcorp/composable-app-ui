@@ -9,7 +9,9 @@ module.exports = {
     './node_modules/@storefront-ui/react/**/*.{js,mjs}',
   ],
   theme: {
-    extend: {},
+    container: {
+      center: true,
+    }
   },
-  plugins: [],
+  plugins: []
 }

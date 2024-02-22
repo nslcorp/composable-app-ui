@@ -5,6 +5,9 @@ interface RequestOptions {
   headers?: any;
   body?: any;
 }
+
+export const BASE_ULR = 'http://localhost:3005'
+
 export const request = async (url: string, options: RequestOptions = {}) => {
   const axiosConfig: AxiosRequestConfig = {
     url,

@@ -41,7 +41,6 @@ const PromoList = ({ data }: { data: PromoSection[] }) => {
 
         if (record.related_products) {
           const { title, relatedproducts } = record.related_products;
-          console.log(relatedproducts);
 
           return (
             <div
@@ -51,7 +50,7 @@ const PromoList = ({ data }: { data: PromoSection[] }) => {
               <div>{title}</div>
               <div className="flex flex-col items-start p-4 grow">
                 {relatedproducts.map((relatedProduct) => (
-                  <p className="font-medium typography-text-base">
+                  <p key={relatedProduct.title} className="font-medium typography-text-base">
                     <span>Did you notice the </span>
                     <Link href={relatedproducts[0].url} className="underline">
                       {relatedProduct.title}?

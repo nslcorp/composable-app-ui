@@ -1,4 +1,3 @@
-import { contentstack } from "@/api/contentstack";
 import ProductsList from "@/app/search/ProductsList/ProductsList";
 import Filters from "@/app/search/Filters/page";
 import { fetchCategories } from "@/api/fetchCategories";
@@ -12,7 +11,7 @@ interface SearchPageParams {
 const SearchPage = async (props: SearchPageParams) => {
   const categories = await fetchCategories();
 
-  const activeCategory = props.searchParams.category;
+  const activeCategory = props.searchParams.category || "";
   const selectedCategoryId =
     categories.find(
       (r) =>

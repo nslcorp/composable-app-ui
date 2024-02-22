@@ -1,9 +1,10 @@
 import { Product } from "@/types";
-import { request } from "@/api/request";
+import { BASE_ULR, request } from "@/api/request";
 
 export const fetchProducts = async (categoryId: number | string): Promise<Product[]> => {
+  console.log(categoryId)
   const products: Product[] = await request(
-    `http://localhost:3000/products/${categoryId}`
+    `${BASE_ULR}/products/${categoryId}`
   );
   return products;
 };

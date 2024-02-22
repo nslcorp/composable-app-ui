@@ -1,4 +1,4 @@
-import { request } from "@/api/request";
+import { BASE_ULR, request } from "@/api/request";
 import { Category } from "@/types";
 import {omit} from "next/dist/shared/lib/router/utils/omit";
 
@@ -26,7 +26,7 @@ import {omit} from "next/dist/shared/lib/router/utils/omit";
 export const fetchCategories = async () => {
   try {
     const categories: Category[] = await request(
-      "http://localhost:3000/categories"
+      `${BASE_ULR}/categories`
     );
 
 

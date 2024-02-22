@@ -8,6 +8,10 @@ export const getProduct = async (slug: string) => {
     "promo_section.related_products.relatedproducts",
   ]);
 
+  contentstackClient.ContentType("product").Query().toJSON()
+    .find()
+    .then((response) => response);
+
   const productsResponse = await ProductQuery.toJSON()
     .find()
     .then((response) => response[0] as ProductResponse[]);

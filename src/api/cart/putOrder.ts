@@ -1,5 +1,5 @@
 import { getCartId } from "@/api/cart/getCartId";
-import { request } from "@/api/request";
+import { BASE_ULR, request } from "@/api/request";
 import { CART_ID_KEY } from "@/app/Bootstrap";
 
 export interface Order {
@@ -10,7 +10,7 @@ export const putOrder = async (): Promise<Order> => {
   try {
     const cartId = getCartId();
 
-    const data = (await request(`http://localhost:3000/cart/${cartId}/order`, {
+    const data = (await request(`${BASE_ULR}/cart/${cartId}/order`, {
       method: "PUT",
     })) as Order;
 
